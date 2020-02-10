@@ -13,9 +13,21 @@
         <hr>
 
         <div class="input-cont">
-            <input type="number" name="desc" id="desc" placeholder="How many boxes?">
-            <button id="create-btn">Generate input-amount boxes</button>
-            <button id="default-btn">Generate 100 boxes</button>
+            <div class="random-values-cont">
+                <input type="number" name="fizz-value" id="fizz-value" value="3" min="1">
+                <input type="number" name="buzz-value" id="buzz-value" value="5" min="1"> 
+                <button id="random-btn-clear">Clear random values</button> 
+                <button id="default-btn">GENERATE BOXES</button>
+                <button id="delete-btn">Clear all</button>  
+            </div>
+            <div class="slider-cont"></div>
+                <p>Set amout of boxes by sliding left or right!</p>
+                <input type="range" min="1" max="100" value="50" class="slider" id="my-range">
+                <p>Amount of boxes: <span id="slider-value"></span></p>
+            </div>
+            <div class="btn-cont">
+
+            </div>
         </div>
         <hr>
         <main class="boxes-cont">
