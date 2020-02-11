@@ -48,18 +48,21 @@ function renderScreen() {
     for (let i = 0; i < boxid.length; i++) {
     if (i % rdnFizzValue === 0 && i % rdnBuzzValue === 0 && i !== 0) {
         boxid[i].innerText = "FizzBuzz: " + i;
-        boxid[i].setAttribute("class", "box-fizz-buzz");
+        boxid[i].classList.add("box-fizz-buzz");
     } else if (i % rdnFizzValue === 0 && i % rdnBuzzValue !== 0) {
         boxid[i].innerText = "Fizz: " + i;
-        boxid[i].setAttribute("class", "box-fizz");
+        boxid[i].classList.add("box-fizz");
     } else if (i % rdnFizzValue !== 0 && i % rdnBuzzValue === 0){
         boxid[i].innerText = "Buzz: " + i;
-        boxid[i].setAttribute("class", "box-buzz");
+        boxid[i].classList.add("box-buzz");
     } else {
         boxid[i].innerText = i;
-        boxid[i].setAttribute("class", "box-default");
+        boxid[i].classList.add("box-default");
     }
 }
+// let string = boxid[30].getAttribute("id");
+// let numbers = string.match(/\d+/g).map(Number);
+
 }
 
 function onDefault() {
