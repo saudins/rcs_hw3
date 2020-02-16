@@ -24,32 +24,26 @@
     color: black;
 }
 
-.box-fizz-buzz {
+.box {
     width:150px;
     height:100px;
-    background-color: #ff9d8c;
     border: solid 2px none;
+}
+.box-fizz-buzz {
+    background-color: #ff9d8c;
+   
 }
 
 .box-fizz {
-    width:150px;
-    height:100px;
     background-color: #8cffd1;
-    border: solid 2px none;
 }
 
 .box-buzz {
-    width:150px;
-    height:100px;
     background-color: #af8cff;
-    border: solid 2px none;
 }
 
 .box-default {
-    width:150px;
-    height:100px;
     background-color: #ffd78c;
-    border: solid 2px none;
 }
 
 .slider {
@@ -81,3 +75,16 @@
     background: #4CAF50;
     cursor: pointer;
   }
+
+  .boxes-cont div {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+  }
+.boxes-cont div p {
+    text-align: center;
+}
+
+footer {
+    text-align: center;
+}

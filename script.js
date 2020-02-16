@@ -1,94 +1,86 @@
-"use strict";
-console.log("Connected!");
+console.log("connected!");
 
-const boxesCont = document.querySelector(".boxes-cont");
+const resultsCont = document.querySelector(".boxes-cont");
 const defaultBtn = document.querySelector("#default-btn");
 const randomFizz = document.querySelector("#fizz-value");
 const randomBuzz = document.querySelector("#buzz-value");
-let slider = document.getElementById("my-range");
-let output = document.getElementById("slider-value");
+const slider = document.getElementById("my-range");
+const output = document.getElementById("slider-value");
 const deleteBtn = document.querySelector("#delete-btn");
 const clearRandomValuesBtn = document.querySelector("#random-btn-clear");
 
-output.innerHTML = slider.value; // Display the default slider value
-
+output.innerText = slider.value; // Display the default slider value
 // Update the current slider value (each time you drag the slider handle)
 slider.oninput = function() {
-  output.innerHTML = this.value;
+  output.innerText = this.value;
 }
 
+
+console.log(resultsCont);
 console.log(slider.value);
-console.log(randomFizz.value);
-console.log(randomBuzz.value);
+console.log("Output value", slider.value);
+console.log("Fizz value", randomFizz.value);
+console.log("Buzz value", randomBuzz.value);
 
 
 
-function generateBox(nbr) {
-    console.log("Generate box with ID");
-    var boxDiv;
-    var i = 0;
-    // var fragment = document.createDocumentFragment;
-    while (i < nbr) {
-        boxDiv = document.createElement("div");
-        // boxDiv.innerText = "ID: " + i;
-        boxDiv.setAttribute("id", "mybox" + (i+1));
-        boxDiv.setAttribute("class", "box");
-        boxesCont.appendChild(boxDiv);
-        i++;
-    // 
-    // boxesCont.appendChild(fragment)
+function fizzBuzz(n) {
+  
+    for(let i = 1; i <= n; i++){
+
+      let elDiv = document.createElement("div");
+      let elPar = document.createElement("p");
+      let rdnFizzValue = randomFizz.value;
+      let rdnBuzzValue = randomBuzz.value;
+      
+      elDiv.appendChild(elPar);
+      resultsCont.appendChild(elDiv).setAttribute("id", "div_" + i); 
+      elDiv.classList.add("box");
+
+      if(i % rdnFizzValue === 0 && i % rdnBuzzValue === 0){
+         console.log('FizzBuzz');
+         elPar.appendChild(document.createTextNode(i + ' = FIZZ BUZZ'));
+         resultsCont.appendChild(elDiv).classList.add("box-fizz-buzz");
+      }else if(i % rdnFizzValue === 0){
+         console.log('Fizz');
+         elPar.appendChild(document.createTextNode(i + ' = FIZZ'));
+         resultsCont.appendChild(elDiv).classList.add("box-fizz");
+      }else if(i % rdnBuzzValue === 0){
+         console.log('Buzz');
+         elPar.appendChild(document.createTextNode(i + ' = BUZZ'));
+         resultsCont.appendChild(elDiv).classList.add("box-buzz");
+      }else{
+         console.log(i);
+         elPar.appendChild(document.createTextNode(i));
+         resultsCont.appendChild(elDiv).classList.add("box-default");
+      }
     }
-}
+ }
 
-function renderScreen() {
-    let boxid = document.querySelectorAll(".box");
-    let rdnFizzValue = randomFizz.value;
-    let rdnBuzzValue = randomBuzz.value;
-    console.log(boxid);
-    for (let i = 0; i < boxid.length; i++) {
-    if (i % rdnFizzValue === 0 && i % rdnBuzzValue === 0 && i !== 0) {
-        boxid[i].innerText = "FizzBuzz: " + i;
-        boxid[i].classList.add("box-fizz-buzz");
-    } else if (i % rdnFizzValue === 0 && i % rdnBuzzValue !== 0) {
-        boxid[i].innerText = "Fizz: " + i;
-        boxid[i].classList.add("box-fizz");
-    } else if (i % rdnFizzValue !== 0 && i % rdnBuzzValue === 0){
-        boxid[i].innerText = "Buzz: " + i;
-        boxid[i].classList.add("box-buzz");
-    } else {
-        boxid[i].innerText = i;
-        boxid[i].classList.add("box-default");
-    }
-}
-// let string = boxid[30].getAttribute("id");
-// let numbers = string.match(/\d+/g).map(Number);
-
-}
-
-function onDefault() {
-    onClearAll();
-    console.log("Clear board before generating new ones");
-    console.log("Generate new boxes based on slider input");
-    generateBox(output.innerHTML);
-    renderScreen();
-    
+ function onDefault() {
+   let countOfBoxes = slider.value;
+   onClearAll();
+   console.log("Clear board before generating new ones");
+   console.log("Generate new boxes based on slider input");
+   fizzBuzz(countOfBoxes);
+   
 }
 
 function onClearAll() {
-    console.log("Clear all elements");
-    while (boxesCont.firstChild) {
-        boxesCont.removeChild(boxesCont.firstChild);
-    }
+   console.log("Clear all elements");
+   while (resultsCont.firstChild) {
+      resultsCont.removeChild(resultsCont.firstChild);
+   }
 }
 
 function onClearRandomValues() {
-    console.log("Reset random values");
-    randomFizz.value = 3;
-    randomBuzz.value = 5;
+   console.log("Reset random values");
+   randomFizz.value = 3;
+   randomBuzz.value = 5;
 }
 
 function addListeners() {
-    console.log("Adding listeners..");
+    console.log("adding listeners..");
     defaultBtn.addEventListener("click", onDefault);
     deleteBtn.addEventListener("click", onClearAll);
     clearRandomValuesBtn.addEventListener("click", onClearRandomValues);
