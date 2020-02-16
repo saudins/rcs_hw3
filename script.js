@@ -15,7 +15,6 @@ slider.oninput = function() {
   output.innerText = this.value;
 }
 
-
 console.log(resultsCont);
 console.log(slider.value);
 console.log("Output value", slider.value);
