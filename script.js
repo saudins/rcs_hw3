@@ -77,6 +77,7 @@ function onClearRandomValues() {
    randomFizz.value = 3;
    randomBuzz.value = 5;
    slider.value = 50;
+   output.innerText = slider.value; 
 }
 
 function addListeners() {
